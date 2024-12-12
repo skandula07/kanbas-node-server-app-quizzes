@@ -13,7 +13,7 @@ const quizSchema = new mongoose.Schema(
     multipleAttempts: { type: Boolean, default: true },
     showCorrectAnswers: { 
       type: String, 
-      enum: ["Immediately after submission", "At the end of the quiz", "Never"], 
+      enum: ["Immediately", "Never"], 
       required: true
     },
     accessCode: { type: String, required: false },
