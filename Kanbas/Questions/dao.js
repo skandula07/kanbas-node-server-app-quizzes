@@ -1,6 +1,11 @@
 import model from "./model.js"; // Import the model
 
-  export const findQuestionById = ((questionId) => ( model.findById( questionId )));
+
+// export function
+  export function findQuestionById(questionId) {
+    console.log("finding question by id", questionId)
+    return model.findOne( { _id : questionId} )
+};
 
   export const updateQuestion = ((questionId, updatedQuestion) =>  model.updateOne({ _id: questionId }, { $set: updatedQuestion }))
 
@@ -9,10 +14,9 @@ import model from "./model.js"; // Import the model
     return question;
   })
 
-
   export const createQuestion = ((newQuestion) => {
     delete newQuestion._id;
-    return model.create(assignment)
+    return model.create(newQuestion)
     })
 
 

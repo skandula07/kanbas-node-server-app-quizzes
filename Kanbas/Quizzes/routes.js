@@ -1,4 +1,7 @@
 import * as quizzesDao from "./dao.js";
+import * as quizQuestionsDao from "../QuizQuestions/dao.js";
+import * as questionsDao from "../Questions/dao.js";
+
 export default function QuizRoutes(app) {
   
 
@@ -27,4 +30,30 @@ export default function QuizRoutes(app) {
     console.log('successfully deleted')
     res.send(status);
   });
+
+
+  const findQuestionsForQuiz = async (req, res) => {
+    const { quizId } = req.params;
+    const questions = await quizQuestionsDao.findQuestionsForQuiz(quizId);
+    res.json(questions);
+  };
+  app.get("/api/quizzes/:quizId/questions", findQuestionsForQuiz);
+
+
+  app.post("/api/quizzes/:quizId/questions", async (req, res) => {
+    const { quizId } = req.params;
+    const question = {
+      ...req.body,
+      course: quizId,
+    };
+    const newQuestion = await questionsDao.createQuestion(question);
+    res.send(newQuestion);
+  });
+
+
+
+
+
+
+
 }
