@@ -6,7 +6,7 @@ import Lab5 from "./Lab5/index.js";
 import cors from "cors";
 import session from "express-session"; // import new server session library
 import "dotenv/config"; // import new dotenv library to read .env file
-
+// IMPORTS
 import UserRoutes from "./Kanbas/Users/routes.js";
 import CourseRoutes from "./Kanbas/Courses/routes.js";
 import ModuleRoutes from "./Kanbas/Modules/routes.js";
