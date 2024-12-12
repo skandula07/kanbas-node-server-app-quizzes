@@ -2,13 +2,18 @@ import model from "./model.js"; // Import the Quiz model
 
 export const findQuizById = (quizId) => model.findById(quizId);
 
-export const updateQuiz = (quizId, updatedQuiz) =>
-model.updateOne({ _id: quizId }, { $set: updatedQuiz });
+export function updateQuiz(quizId, updatedQuiz) {
+    console.log("updating quiz... ", quizId);
+    console.log("updating quiz with these contents... ", updatedQuiz);
+    return model.updateOne({ _id: quizId }, { $set: updatedQuiz });
 
-export const deleteQuiz = (quizId) => {
-  const quiz = model.deleteOne({ _id: quizId });
-  return quiz;
-};
+}
+
+export function deleteQuiz(quizId) {
+    console.log(quizId)
+    return model.deleteOne({ _id: quizId });
+  }
+
 
 export const createQuiz = (newQuiz) => {
   delete newQuiz._id;
@@ -16,3 +21,9 @@ export const createQuiz = (newQuiz) => {
 };
 
 export const findQuizzes = () => model.find(); // Fetch all quizzes
+
+
+
+export function findQuizzesForCourse(courseId) {
+    return model.find({ course: courseId });
+  }

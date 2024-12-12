@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const schema = new mongoose.Schema(
   {
+    course: { type: mongoose.Schema.Types.ObjectId, ref: "CourseModel" },
     title: String,
     description: String,
     quizType: String,
@@ -23,6 +24,7 @@ const schema = new mongoose.Schema(
     availableDate: { type: Date, required: true },
     untilDate: { type: Date, default: null }
   },
+  
   { collection: "quizzes" }
 );
 
